@@ -1,0 +1,274 @@
+@use "base";
+
+body {
+    //HOME SECTION
+    //Sets height and background of the header
+    header {
+        //header covers the first 100vh of site
+        height: 100vh;
+        //@include linearGradient($mainBackgroundGradient);
+        padding: 1em 1em;
+        background: $primaryColour;
+        border-bottom: solid 2px #ccc;
+        border-radius: 0 0 0 100px;
+
+        nav {
+            @include flexContainer(row, space-between, center);
+            height: 5%;
+
+            h4 {
+                font-size: 1.25rem;
+                color: $secondaryText;
+
+                span {
+                    color: $secondaryText;
+                }
+            }
+            .burger {
+                cursor: pointer;
+                div {
+                    height: 3px;
+                    width: 25px;
+                    margin: 4px;
+                    background-color: $secondaryColour;
+                }
+            }
+        }
+
+        .home-section {
+            height: 95%;
+            @include flexContainer(column, center, center);
+
+            h1, h2, a {
+                padding: 30px;
+            }
+
+            .contact-icons-container {
+                padding: 20px;
+
+                img {
+                    padding: 0 20px;
+                }
+            }
+
+            .buttons-container {
+                border: 20px;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 9vw;
+                color: $secondaryText;
+                text-shadow: 3px 4px 7px rgba(81,67,21,0.8);
+            }
+
+            h2 {
+                font-size: 5vw;
+                color: $secondaryText;
+            }
+
+            .contact-icons-container {
+                img {
+                    height: 3rem;
+                }
+            }
+
+            div:nth-child(2) {
+                @include flexContainer(row, center, center);
+
+                button {
+                    @include customButton(white);
+                }
+            }
+        }
+    }
+
+    //ABOUT SECTION
+    .about {
+        background-color: $primaryColour;
+        padding: 2% 2%;
+        margin: 0 auto;
+        text-align: center;
+        color: $secondaryText;
+        border-bottom: solid 2px #ccc;
+        border-radius: 0 0 100px 0;
+    
+        h2 {
+            padding: 40px;
+            font-weight: 700;
+        }
+    
+      
+    
+        .bio {
+            width: 90%;
+            margin: 0 auto;
+    
+            p {
+                font-size: 14px;
+                line-height: 25px;
+                font-weight: 500;
+            }
+            p:nth-child(1) {
+                padding-bottom: 2em;
+            }
+        }
+    
+        ul {
+            list-style-type: none;
+            @include flexContainer(row, center, center);
+            flex-wrap: wrap;
+            padding: 0 10%;
+            margin: 0 auto;
+    
+            li {
+                padding: 20px;
+    
+                h4 {
+                    font-weight: 400;
+                    font-size: 14px;
+                }
+                img {
+                    height: 100px;
+                    width: auto;  
+                    transition: 0.3s;
+                    &:hover {
+                        transform: translate(0, -10px);
+                    }
+                }
+            }
+        }
+    }
+
+    .projects-section {
+        @include flexContainer(column, center, center);
+        padding: 2%;
+        color: black;
+        border-bottom: solid 2px #ccc;
+        border-radius: 0 0 75px 75px;
+
+        h2 {
+            padding: 40px;
+        }
+
+        .project {
+            width: 80%;
+            padding: 5%; 
+            margin: 5% auto;  
+            @include flexContainer(column, center, center);
+            text-align: center;
+            background: rgba( 255, 255, 255, 0.15 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            -webkit-backdrop-filter: blur( 15.0px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+            h3, p, img {
+                padding: 4%;
+            }
+            img {
+                height: 30vw;
+            }
+
+            .project-buttons{
+                @include flexContainer(row, center, center);
+
+                button {
+                    @include customButton($secondaryColour);
+                }
+
+                a {
+                    padding: 5%;
+                }
+            }
+        }
+    }
+
+    .contact-section {
+        text-align: center;
+        color: $secondaryText;
+        padding: 5%;
+
+        h2, p {
+            padding: 2%;
+        }
+
+        .contact-buttons {
+            @include flexContainer(row, center, center);
+            a {
+                padding: 20px;
+        
+            }
+            button {
+                @include customButton($tertiaryColour);
+                border-radius: 10px;
+                
+            }
+        }
+    }
+
+    @media all and (min-width: 750px) {
+        header {
+            .home-section {
+                h1 {
+                    font-size: 5vw;
+                }
+
+                h2 {
+                    font-size: 2.5vw;
+                }
+
+                .buttons-container {
+                   button {
+                       width: 17vw;
+                   }
+                }
+            }
+
+            .about {
+                .skills-list {
+                    padding: 0 3%;
+                }
+            }
+        }
+
+        main {
+            .about {
+                .skills-list {
+                    padding: 0 3%;
+                }
+            }
+
+            .projects-section {
+
+                .projects-container {
+                    @include flexContainer(row, center, center);
+                    flex-wrap: wrap;
+    
+                    .project {
+                        width: 40%;
+                        padding: 2%;
+                        margin: 2%;
+
+                        p {
+                            font-size: .75rem;
+                        }
+
+                        img {
+                            width: 80%;
+                            height: auto;
+                        }
+
+                        .project-buttons {
+
+                            button {
+                                width: 100px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
